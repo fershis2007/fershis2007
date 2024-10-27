@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Vaquera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope" id="envelope">
+            <div class="flap"></div>
+            <div class="content">
+                <h1 class="title">Carlos fest</h1>
+                <div class="audio-container">
+                    <img src="abuelo.jpg" alt="Imagen Vaquera" class="party-image">
+                    <audio preload="auto" controls>
+                        <source src="cancionn.mp3" type="audio/mpeg">
+
+                    </audio>
+                </div>
+                <p>¡Te espero en mi fiesta!</p>
+                <p>¡No te la pierdas!ven a festejar comigo mi cumpleaños,te espero con mucho gusto a pasar un momento muy agradable </p>
+                <br>
+                <br>
+                <p><strong>El día: </strong> 09 de noviembre de 2024  7:00 PM</p> 
+                <button id="add-to-calendar">Añadir al Calendario</button>
+                <br><br>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const addToCalendarButton = document.getElementById('add-to-calendar');
+                        const openMapButton = document.getElementById('open-map');
+            
+                        // Añadir evento para el botón "Añadir al Calendario"
+                        addToCalendarButton.addEventListener('click', () => {
+                            const eventTitle = "Carlos fest";
+                            const eventDetails = "¡Te esperamos en la fiesta!";
+                            const eventLocation = "Las Carabinas";
+                            const startDate = "20241109T190000Z"; // 9 de noviembre de 2024, 7:00 PM UTC
+                            const endDate = "20241109T210000Z";   // 9 de noviembre de 2024, 9:00 PM UTC
+            
+                            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${eventLocation}`;
+                            window.open(calendarUrl, '_blank');
+                        });
+            
+                        // Añadir evento para el botón "Ver en Google Maps"
+                        openMapButton.addEventListener('click', () => {
+                            window.open('https://maps.app.goo.gl/JjtX4nvgmqkgqsqD6', '_blank');
+                        });
+                    });
+                </script>        
+                <div class="con">
+                    <div id="timer">
+                        <span id="days">0</span> :
+                        <span id="hours"> 0</span> :
+                        <span id="minutes">0</span> :
+                        <span id="seconds">0</span> 
+                    </div>
+                </div>
+                <script>
+                    // script.js
+                // Set the date we're counting down to
+                const countDownDate = new Date("November 9, 2024 00:00:00").getTime();
+
+                // Update the count down every 1 second
+                const x = setInterval(function() {
+
+                    // Get today's date and time
+                    const now = new Date().getTime();
+
+                    // Find the distance between now and the count down date
+                    const distance = countDownDate - now;
+
+                    // Time calculations for days, hours, minutes and seconds
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Display the result in the elements
+                    document.getElementById("days").innerHTML = days;
+                    document.getElementById("hours").innerHTML = hours;
+                    document.getElementById("minutes").innerHTML = minutes;
+                    document.getElementById("seconds").innerHTML = seconds;
+
+                    // If the countdown is finished, write some text
+                    if (distance < 0) {
+                        clearInterval(x);
+                        document.getElementById("timer").innerHTML = "EXPIRED";
+                    }
+                }, 1000);
+                </script>
+                <p><strong>En las carabinas </strong></p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d715.3147800087712!2d-109.8432254762987!3d27.480046605713255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c8114e4c0390d1%3A0x13e8c74e6bdb136e!2sJuan+Mungu%C3%ADa%2C+85205+La+Carabina%2C+Son.!5e0!3m2!1ses-419!2smx!4v1729972684214!5m2!1ses-419!2smx" width="300" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <button id="open-map">Ver en Google Maps</button>
+               
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
